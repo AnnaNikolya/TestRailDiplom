@@ -1,5 +1,5 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.SignUpPage;
 
 import static pages.SignUpPage.openHomePage;
 
@@ -11,5 +11,7 @@ public class SignUpTest extends BaseTest {
         signUpPage.enterValue("diplontestrail", "YourFistName", "YourLastName",
                 "BY", "1", "diplontestrail@mailinator.com", "JJJJ",
                 "Waiting for email confirmation from");
+        String informText = "Waiting for email confirmation from";
+        Assert.assertEquals(informText, "Waiting for email confirmation from");
     }
 }

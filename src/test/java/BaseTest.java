@@ -1,14 +1,16 @@
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.TestRailPage;
-import pages.LoginPage;
-import pages.SignUpPage;
+import pages.*;
 
 public class BaseTest {
     LoginPage loginPage;
     SignUpPage signUpPage;
-    TestRailPage testRailPage;
+    AdminPage adminPage;
+    DashboardPage dashboardPage;
+    HeaderPage headerPage;
+    MySettingsPage mySettingsPage;
+    ProjectsPage projectsPage;
 
     @BeforeMethod
     public void init() {
@@ -18,7 +20,11 @@ public class BaseTest {
         Configuration.headless = false;
         signUpPage = new SignUpPage();
         loginPage = new LoginPage();
-        testRailPage = new TestRailPage();
+        adminPage = new AdminPage();
+        dashboardPage = new DashboardPage();
+        headerPage = new HeaderPage();
+        mySettingsPage = new MySettingsPage();
+        projectsPage = new ProjectsPage();
     }
 
     @AfterMethod
