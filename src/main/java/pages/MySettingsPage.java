@@ -21,5 +21,4 @@ public class MySettingsPage {
     public String findNameAPIKey() {
         return $(NAME_API_REY).getText();
     }
-
 }

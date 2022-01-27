@@ -30,5 +30,4 @@ public class BaseTest {
     @AfterMethod
     public void quit() {
     }
-
 }
