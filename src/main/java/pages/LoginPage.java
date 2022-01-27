@@ -7,6 +7,7 @@ public class LoginPage extends BasePage {
     String EMAIL_INPUT = "#name";
     String PASSWORD_INPUT = "#password";
     String LOGIN_BUTTON = "#button_primary";
+    String DASHBOARD = "#navigation-dashboard";
 
     public static void openDashboardPage() {
         open(DASHBOARD_URL);
@@ -16,5 +17,9 @@ public class LoginPage extends BasePage {
         $(EMAIL_INPUT).sendKeys(email);
         $(PASSWORD_INPUT).sendKeys(password);
         $(LOGIN_BUTTON).click();
+    }
+
+    public String getText() {
+        return $(DASHBOARD).getText();
     }
 }
