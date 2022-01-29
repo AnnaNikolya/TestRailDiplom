@@ -1,5 +1,7 @@
 package pages;
 
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Selenide.$;
 
 public class MySettingsPage {
@@ -10,6 +12,7 @@ public class MySettingsPage {
     String SAVE_KEY = "#userTokenAdd";
     String NAME_API_REY = ".odd.token>td:nth-child(1)";
 
+    @Step("Create API Key named: '{name}'")
     public void createAPIKey(String name) {
         $(API_KEY_TAB).click();
         $(ADD_KEY_BUTTON).click();

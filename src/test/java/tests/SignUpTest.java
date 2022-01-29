@@ -7,11 +7,11 @@ import static pages.SignUpPage.openHomePage;
 
 
 public class SignUpTest extends BaseTest {
-    @Test
+    @Test(priority = 1, description = "this test validates the sign-up test")
     @Description ("Create account")
     public void openHomePageTest() {
         openHomePage();
-        signUpPage.enterValue("diplontestrail987", "YourFistName", "YourLastName",
+        signUpPage.enterValue("diplontestrail93447", "YourFistName", "YourLastName",
                 "BY", "1", "diplontestrail@mailinator.com", "JJJJ",
                 "Waiting for email confirmation from");
         String informText = "Waiting for email confirmation from";

@@ -1,4 +1,8 @@
 package pages;
+
+
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -12,6 +16,7 @@ public class LoginPage extends BasePage {
         open(DASHBOARD_URL);
     }
 
+    @Step("Login as email: '{email}' with password: '{password}'")
     public void login(String email, String password) {
         $(EMAIL_INPUT).sendKeys(email);
         $(PASSWORD_INPUT).sendKeys(password);

@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -23,7 +24,9 @@ public class SignUpPage extends BasePage {
         open(HOME_PAGE);
     }
 
-    public BasePage enterValue(String address, String firstName, String lastName, String country, String number,
+    @Step("Sign up account input value address: '{Test 2'}', first name '{firstName}', last name '{lastName}'" +
+            "country: '{country}', choose number users: '{number}', work email: '{workEmail}', organization: '{organization}'")
+    public void enterValue(String address, String firstName, String lastName, String country, String number,
                                String workEmail, String organization, String someText) {
         buttonTryTest.scrollIntoView(SCROLL_INTO_CENTER_SCRIPT).click();
         $(WEB_ADDRESS_INPUT).sendKeys(address);
@@ -36,6 +39,5 @@ public class SignUpPage extends BasePage {
         $(CHECKBOX_AGREE).click();
         $(BUTTON_CREATE_TESTRAIL_TRAIL).click();
         $(VERIFY_TEXT).shouldHave(text(someText));
-        return new BasePage();
     }
 }

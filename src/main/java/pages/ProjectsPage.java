@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -32,17 +33,18 @@ public class ProjectsPage extends BasePage {
     String OK_BUTTON = "//*[@id='deleteDialog']//div[contains(@class,'button-group')]/a[contains(@class,'button-ok')]";
     String TEXT_DELETE = "#content-inner >.message-success";
 
-    public String createProjectWithoutValue() {
+    @Step("Create project without value")
+    public void createProjectWithoutValue() {
         $(ADD_PROJECT_BUTTON).click();
         $(SAVE_ADD_PROJECT_BUTTON).click();
         $(MISTAKE_TEXT).shouldHave(Condition.visible);
-        return null;
     }
 
     public String textMistakeCreate() {
         return $(MISTAKE_TEXT).getText();
     }
 
+    @Step("Create project called: '{name}' and successful creation:'{text}'")
     public void createProjectWithValue(String name, String text) {
         $(PROJECT_TAB).click();
         $(BUTTON_ADD_PROJECT).click();
@@ -55,6 +57,7 @@ public class ProjectsPage extends BasePage {
         return $(By.xpath(CHOOSE_PROJECT)).getText();
     }
 
+    @Step("Create test run called:'{name}'")
     public void createTestRun(String name) {
         $(TEST_RUN_TAB).click();
         $(ADD_TEST_RUN_BUTTON).click();
@@ -63,11 +66,11 @@ public class ProjectsPage extends BasePage {
         $(SAVE_ADD_TEST_RAN).click();
     }
 
-
     public String contentTextInHeader() {
         return $(By.xpath(CONTENT_HEADER)).getText();
     }
 
+    @Step("Create example project called: '{name}'")
     public void createExampleProject(String name) {
         $(PROJECT_TAB).click();
         $(By.xpath(BUTTON_ADD_EXAMPLE_PROJECT)).click();
@@ -79,6 +82,7 @@ public class ProjectsPage extends BasePage {
         return $(By.xpath(CHOOSE_EXAMPLE_PROJECT)).getText();
     }
 
+    @Step("Delete select project: Test 2'")
     public void deleteProject() {
         $(PROJECT_TAB).click();
         $(By.xpath(DELETE)).click();
