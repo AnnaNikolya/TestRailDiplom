@@ -1,12 +1,15 @@
+package tests;
 
 import constants.IConstants;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertTrue;
 
 public class TestRailTest extends BaseTest implements IConstants {
-    @Test
+    @Test(priority = 3)
+    @Description("Create API Key")
     public void createAPIKeyTest() {
         loginPage.openPage(DASHBOARD_URL);
         loginPage.login(EMAIL, PASSWORD);
@@ -17,15 +20,18 @@ public class TestRailTest extends BaseTest implements IConstants {
         Assert.assertEquals(nameAPIRey, getTextCreateAPI);
     }
 
-    @Test
+    @Test(priority = 4)
+    @Description("Checking the creation of a project without entering data")
     public void createProjectWithoutValueTest() {
-        loginPage.openPage(DASHBOARD_URL);
-        loginPage.login(EMAIL, PASSWORD);
+      //  loginPage.openPage(DASHBOARD_URL);
+      //  loginPage.login(EMAIL, PASSWORD);
+        dashboardPage.openDashboardTab();
         projectsPage.createProjectWithoutValue();
         assertTrue(projectsPage.textMistakeCreate().contains("Field Name is a required field."));
     }
 
-    @Test
+    @Test(priority = 5)
+    @Description("Create project Test 2")
     public void createProjectWithValueTest() {
         loginPage.openPage(DASHBOARD_URL);
         loginPage.login(EMAIL, PASSWORD);
@@ -34,16 +40,19 @@ public class TestRailTest extends BaseTest implements IConstants {
         Assert.assertEquals(projectsPage.findNameProject(), "Test 2");
     }
 
-    @Test
+    @Test(priority = 6)
+    @Description("Create test run for project Test 2")
     public void createTestRunTest() {
         loginPage.openPage(DASHBOARD_URL);
         loginPage.login(EMAIL, PASSWORD);
-        dashboardPage.openProject();
+        dashboardPage.openDashboardTab();
+        dashboardPage.openProject("Test 2");
         projectsPage.createTestRun("FirstTestRun");
         assertTrue(projectsPage.contentTextInHeader().contains("FirstTestRun"));
     }
 
-    @Test
+    @Test(priority = 7)
+    @Description("Create example project Test 3")
     public void createExampleProjectTest() {
         loginPage.openPage(DASHBOARD_URL);
         loginPage.login(EMAIL, PASSWORD);
@@ -54,7 +63,8 @@ public class TestRailTest extends BaseTest implements IConstants {
         Assert.assertEquals(nameExampleProject, getTextNameExampleProjectProject);
     }
 
-    @Test
+    @Test(priority = 8, dependsOnMethods = "createProjectWithValueTest")
+    @Description("Delete project Test 2")
     public void deleteProjectTest() {
         loginPage.openPage(DASHBOARD_URL);
         loginPage.login(EMAIL, PASSWORD);

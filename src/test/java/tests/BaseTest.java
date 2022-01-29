@@ -1,5 +1,11 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.webdriver.ChromeDriverFactory;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
 
@@ -13,7 +19,7 @@ public class BaseTest {
     ProjectsPage projectsPage;
 
     @BeforeMethod
-    public void init() {
+    public void init(ITestContext context) {
         Configuration.browser = "chrome";
         Configuration.timeout = 30000;
         Configuration.holdBrowserOpen = true;
@@ -25,10 +31,12 @@ public class BaseTest {
         headerPage = new HeaderPage();
         mySettingsPage = new MySettingsPage();
         projectsPage = new ProjectsPage();
+//        ChromeDriverFactory driver = new ChromeDriverFactory();
+//        String driverVariable = "driver" ;
+//        context.setAttribute(driverVariable, driver);driver
     }
 
     @AfterMethod
     public void quit() {
     }
-
 }
