@@ -7,8 +7,3 @@ public interface IConstants {
     String EMAIL = "diplontestrail@mailinator.com";
     String PASSWORD = "k2Jntx.y5gHK0hdqKWbH";
 }
-
-//
-//Address: https://diplontestrail1234.testrail.io/
-//        Username: diplontestrail@mailinator.com
-//Password: k2Jntx.y5gHK0hdqKWbH
