@@ -13,7 +13,7 @@ public class SignUpTest extends BaseTest {
     @Description("Create account")
     public void openHomePageTest() {
         openHomePage();
-        signUpPage.enterValue("diplontestrai3347", "YourFistName", "YourLastName",
+        signUpPage.enterValue("diplontestra47", "YourFistName", "YourLastName",
                 "BY", "1", "diplontestrail@mailinator.com", "JJJJ",
                 "Waiting for email confirmation from");
         String informText = "Waiting for email confirmation from";
