@@ -39,10 +39,10 @@ public class BaseTest {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
-       // Configuration.browser = "Safari";
-        Configuration.timeout = 30000;
-        Configuration.holdBrowserOpen = true;
-        Configuration.headless = false;
+//        Configuration.browser = "chrome";
+//        Configuration.timeout = 30000;
+//        Configuration.holdBrowserOpen = true;
+//        Configuration.headless = false;
         driver.manage().window().maximize();
         String driverVariable = "driver";
         context.setAttribute(driverVariable, driver);
@@ -54,8 +54,8 @@ public class BaseTest {
         projectsPage = new ProjectsPage();
     }
 
-    @AfterMethod
-    public void quit() {
-        getWebDriver().quit();
+    @AfterMethod(alwaysRun = true)
+    public void closeDriver() {
+        driver.quit();
     }
 }

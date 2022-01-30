@@ -17,6 +17,8 @@ public class TestRailTest extends LoginTest implements IConstants {
     @Test(priority = 3)
     @Description("Create API Key")
     public void createAPIKeyTest() {
+        loginPage.openPage(DASHBOARD_URL);
+        loginPage.login(EMAIL, PASSWORD);
         dashboardPage.openDashboardTab();
         mySettingsPage.createAPIKey("ProjectKey");
         String nameAPIRey = "ProjectKey";
@@ -27,6 +29,8 @@ public class TestRailTest extends LoginTest implements IConstants {
     @Test(priority = 4)
     @Description("Checking the creation of a project without entering data")
     public void createProjectWithoutValueTest() {
+        loginPage.openPage(DASHBOARD_URL);
+        loginPage.login(EMAIL, PASSWORD);
         dashboardPage.openDashboardTab();
         projectsPage.createProjectWithoutValue();
         assertTrue(projectsPage.getMistakeText().contains("Field Name is a required field."));
@@ -35,6 +39,8 @@ public class TestRailTest extends LoginTest implements IConstants {
     @Test(priority = 5)
     @Description("Create project Test 2")
     public void createProjectWithValueTest() {
+        loginPage.openPage(DASHBOARD_URL);
+        loginPage.login(EMAIL, PASSWORD);
         adminPage.openAdminTab();
         projectsPage.createProjectWithValue("Test 2", "Successfully added the new project.");
         assertTrue(projectsPage.findNameProject().contains("Test 2"));
@@ -43,6 +49,8 @@ public class TestRailTest extends LoginTest implements IConstants {
     @Test(priority = 6)
     @Description("Create test run for project Test 2")
     public void createTestRunTest() {
+        loginPage.openPage(DASHBOARD_URL);
+        loginPage.login(EMAIL, PASSWORD);
         dashboardPage.openDashboardTab();
         dashboardPage.openProject("Test 2");
         projectsPage.createTestRun("FirstTestRun");
@@ -52,6 +60,8 @@ public class TestRailTest extends LoginTest implements IConstants {
     @Test(priority = 7)
     @Description("Create example project Test 3")
     public void createExampleProjectTest() {
+        loginPage.openPage(DASHBOARD_URL);
+        loginPage.login(EMAIL, PASSWORD);
         adminPage.openAdminTab();
         projectsPage.createExampleProject("Test 3");
         String nameExampleProject = "Test 3";
@@ -62,6 +72,8 @@ public class TestRailTest extends LoginTest implements IConstants {
     @Test(priority = 8, dependsOnMethods = "createProjectWithValueTest")
     @Description("Delete project Test 2")
     public void deleteProjectTest() {
+        loginPage.openPage(DASHBOARD_URL);
+        loginPage.login(EMAIL, PASSWORD);
         adminPage.openAdminTab();
         projectsPage.deleteProject();
         assertTrue(projectsPage.getContentAboutDelete().contains("Successfully deleted the project."));
