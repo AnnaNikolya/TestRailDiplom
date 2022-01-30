@@ -29,7 +29,7 @@ public class BaseTest {
         mySettingsPage = new MySettingsPage();
         projectsPage = new ProjectsPage();
         ChromeDriverFactory driver = new ChromeDriverFactory();
-        String driverVariable = "driver" ;
+        String driverVariable = "driver";
         context.setAttribute(driverVariable, driver);
     }
 

@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+
 @Log4j2
 public class LoginPage extends BasePage {
     String EMAIL_INPUT = "#name";

@@ -20,7 +20,6 @@ public class ProjectsPage extends BasePage {
     String SUCCESSFULLY_TEXT = ".message.message-success";
 
     String CHOOSE_PROJECT = ".grid>tbody";
-        //    "//a[contains(text(),'Test 2')]";
     String TEST_RUN_TAB = "#navigation-runs";
     String ADD_TEST_RUN_BUTTON = "#navigation-runs-add";
     String NAME_TEST_RUN = "#name";
