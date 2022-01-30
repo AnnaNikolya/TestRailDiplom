@@ -19,13 +19,13 @@ public class LoginPage extends BasePage {
 
     @Step("Login as email: '{email}' with password: '{password}'")
     public void login(String email, String password) {
-        log.info(String.format("Type text: '%s' into username input"));
+        log.info("Type text: '{email}' into username input and text: '{password}' into password input");
         $(EMAIL_INPUT).sendKeys(email);
         $(PASSWORD_INPUT).sendKeys(password);
         $(LOGIN_BUTTON).click();
     }
 
-    public String getText() {
+    public String getDashboardText() {
         return $(DASHBOARD).getText();
     }
 }

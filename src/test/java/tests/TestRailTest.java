@@ -3,21 +3,26 @@ package tests;
 import constants.IConstants;
 import io.qameta.allure.Description;
 import lombok.extern.log4j.Log4j2;
+import org.apache.hc.core5.util.Asserts;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.Assertion;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 @Log4j2
-public class TestRailTest extends BaseTest implements IConstants {
+public class TestRailTest extends LoginTest implements IConstants {
     @Test(priority = 3)
     @Description("Create API Key")
     public void createAPIKeyTest() {
        // loginPage.openPage(DASHBOARD_URL);
      //   loginPage.login(EMAIL, PASSWORD);
+        dashboardPage.openDashboardTab();
         mySettingsPage.createAPIKey("ProjectKey");
         String nameAPIRey = "ProjectKey";
         String getTextCreateAPI = mySettingsPage.findNameAPIKey();
-        Assert.assertEquals(nameAPIRey, getTextCreateAPI);
+        Assert.assertEquals(getTextCreateAPI, nameAPIRey);
     }
 
     @Test(priority = 4)
@@ -37,7 +42,7 @@ public class TestRailTest extends BaseTest implements IConstants {
 //        loginPage.login(EMAIL, PASSWORD);
         adminPage.openAdminTab();
         projectsPage.createProjectWithValue("Test 2", "Successfully added the new project.");
-        Assert.assertEquals(projectsPage.findNameProject(), "Test 2");
+        assertTrue(projectsPage.findNameProject().contains("Test 2"));
     }
 
     @Test(priority = 6)
@@ -71,12 +76,5 @@ public class TestRailTest extends BaseTest implements IConstants {
         adminPage.openAdminTab();
         projectsPage.deleteProject();
         assertTrue(projectsPage.getContentAboutDelete().contains("Successfully deleted the project."));
-    }
-
-    @Test
-    public void loggerTests(){
-        log.info("info");
-        log.debug("debug");
-        log.trace("trace");
     }
 }

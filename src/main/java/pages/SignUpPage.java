@@ -43,4 +43,8 @@ public class SignUpPage extends BasePage {
         $(BUTTON_CREATE_TESTRAIL_TRAIL).click();
         $(VERIFY_TEXT).shouldHave(text(someText));
     }
+
+    public String findVerifyText() {
+        return $(VERIFY_TEXT).getText();
+    }
 }

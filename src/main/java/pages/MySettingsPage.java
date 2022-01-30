@@ -16,7 +16,7 @@ public class MySettingsPage {
 
     @Step("Create API Key named: '{name}'")
     public void createAPIKey(String name) {
-        log.info("Click dropdown account and go to the setting for create API Key");
+        log.info("Click dropdown account and go to the setting for create API Key named: '{name}'");
         $(API_KEY_TAB).click();
         $(ADD_KEY_BUTTON).click();
         $(TOKEN_NAME).sendKeys(name);

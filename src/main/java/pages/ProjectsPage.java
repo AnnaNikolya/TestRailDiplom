@@ -1,12 +1,13 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
+
 @Log4j2
 public class ProjectsPage extends BasePage {
     String ADD_PROJECT_BUTTON = "#sidebar-projects-add";
@@ -18,7 +19,8 @@ public class ProjectsPage extends BasePage {
     String BUTTON_ADD_PROJECT = "a[href*='add']";
     String SUCCESSFULLY_TEXT = ".message.message-success";
 
-    String CHOOSE_PROJECT = "//a[contains(text(),'Test 2')]";
+    String CHOOSE_PROJECT = ".grid>tbody";
+        //    "//a[contains(text(),'Test 2')]";
     String TEST_RUN_TAB = "#navigation-runs";
     String ADD_TEST_RUN_BUTTON = "#navigation-runs-add";
     String NAME_TEST_RUN = "#name";
@@ -39,7 +41,7 @@ public class ProjectsPage extends BasePage {
     public void createProjectWithoutValue() {
         $(ADD_PROJECT_BUTTON).click();
         $(SAVE_ADD_PROJECT_BUTTON).click();
-        $(MISTAKE_TEXT).shouldHave(Condition.visible);
+        $(MISTAKE_TEXT).shouldHave(visible);
     }
 
     public String getMistakeText() {
@@ -57,7 +59,7 @@ public class ProjectsPage extends BasePage {
     }
 
     public String findNameProject() {
-        return $(By.xpath(CHOOSE_PROJECT)).getText();
+        return $(CHOOSE_PROJECT).getText();
     }
 
     @Step("Create test run called:'{name}'")

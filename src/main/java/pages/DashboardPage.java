@@ -10,10 +10,10 @@ import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class DashboardPage {
-    String FIELD_PROJECT = "#content_container>div.summary-auto";
-    String DASHBOARD_TAB = "#navigation-dashboard";
+    private static final String FIELD_PROJECT = "#content_container>div.summary-auto";
+    private static final  String DASHBOARD_TAB = "#navigation-dashboard";
 
-    @Step("Open select project")
+    @Step("Open select project: '{nameProject}'")
     public void openProject(String nameProject) {
         $(FIELD_PROJECT).find(withText(nameProject)).click();
     }
