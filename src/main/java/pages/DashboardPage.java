@@ -19,7 +19,6 @@ public class DashboardPage {
         $(FIELD_PROJECT).find(withText(nameProject)).click();
     }
 
-
     @Step("Open tab Dashboard")
     public void openDashboardTab() {
         log.info("Click tab Dashboard");

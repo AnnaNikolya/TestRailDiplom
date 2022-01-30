@@ -19,6 +19,5 @@ public class LoginTest extends BaseTest implements IConstants {
         openDashboardPage();
         loginPage.login(EMAIL, PASSWORD);
         Assert.assertEquals(loginPage.getDashboardText(), "DASHBOARD");
-
     }
 }
