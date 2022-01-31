@@ -39,6 +39,7 @@ public class BaseTest {
             driver = new ChromeDriver();
         }
         WebDriverRunner.setWebDriver(driver);
+        driver.manage().window().maximize();
         String driverVariable = "driver";
         context.setAttribute(driverVariable, driver);
         signUpPage = new SignUpPage();
