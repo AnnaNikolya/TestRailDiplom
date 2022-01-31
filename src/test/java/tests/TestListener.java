@@ -11,7 +11,6 @@ import org.testng.ITestResult;
 
 import java.util.concurrent.TimeUnit;
 
-
 public class TestListener implements ITestListener {
 
     @Override
@@ -60,15 +59,15 @@ public class TestListener implements ITestListener {
     @Attachment(value = "screenshot", type = "image/png")
     public static byte[] takeScreenshot(ITestResult iTestResult) {
         ITestContext context = iTestResult.getTestContext();
-        try {
+        try{
             WebDriver driver = (WebDriver) context.getAttribute("driver");
             if (driver != null) {
                 return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             } else {
-                return new byte[]{};
+                return new byte[] {};
             }
         } catch (NoSuchSessionException | IllegalStateException exception) {
-            return new byte[]{};
+            return new byte[] {};
         }
     }
 }

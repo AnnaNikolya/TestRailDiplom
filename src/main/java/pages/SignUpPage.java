@@ -19,8 +19,8 @@ public class SignUpPage extends BasePage {
     public static final String ORGANIZATION_INPUT = "#organization";
     public static final String EXPECTED_USERS = "#users";
     public static final String CHECKBOX_AGREE = "#tos";
-    public static final String BUTTON_CREATE_TESTRAIL_TRAIL = ".btn.btn-success";
-    public static final String VERIFY_TEXT = "#email-confirm";
+    private static final SelenideElement buttonCreateTestRail = $(".btn.btn-success");
+    public static final String VERIFY_TEXT = ".content-title";
 
     public static void openHomePage() {
         open(HOME_PAGE);
@@ -40,7 +40,7 @@ public class SignUpPage extends BasePage {
         $(ORGANIZATION_INPUT).sendKeys(organization);
         $(EXPECTED_USERS).selectOptionByValue(String.valueOf(number));
         $(CHECKBOX_AGREE).click();
-        $(BUTTON_CREATE_TESTRAIL_TRAIL).click();
+        buttonCreateTestRail.scrollIntoView(SCROLL_INTO_CENTER_SCRIPT).click();
         $(VERIFY_TEXT).shouldHave(text(someText));
     }
 

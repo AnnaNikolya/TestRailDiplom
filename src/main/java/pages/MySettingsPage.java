@@ -7,6 +7,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 @Log4j2
 public class MySettingsPage {
+    String ACCOUNT_TAB = "#navigation-user";
+    String ME_SETTING = "#navigation-user-settings";
     String API_KEY_TAB = ".tab4";
     String ADD_KEY_BUTTON = "#addToken > p > a";
     String TOKEN_NAME = "#userTokenName";
@@ -17,6 +19,8 @@ public class MySettingsPage {
     @Step("Create API Key named: '{name}'")
     public void createAPIKey(String name) {
         log.info("Click dropdown account and go to the setting for create API Key named: '{name}'");
+        $(ACCOUNT_TAB).click();
+        $(ME_SETTING).click();
         $(API_KEY_TAB).click();
         $(ADD_KEY_BUTTON).click();
         $(TOKEN_NAME).sendKeys(name);

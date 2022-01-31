@@ -13,10 +13,10 @@ public class SignUpTest extends BaseTest {
     @Description("Create account")
     public void openHomePageTest() {
         openHomePage();
-        signUpPage.enterValue("diplontestra47", "YourFistName", "YourLastName",
-                "BY", "1", "diplontestrail@mailinator.com", "JJJJ",
-                "Waiting for email confirmation from");
-        String informText = "Waiting for email confirmation from";
+        signUpPage.enterValue("diplontestwork12", "YourFistName11", "YourLastName11",
+                "BY", "1", "diplontestrail@mailinator.com", "kkk34",
+                "Please confirm your account by clicking the link we've just emailed you");
+        String informText = "Please confirm your account by clicking the link we've just emailed you";
         String getTextСonfirmation = signUpPage.findVerifyText();
         Assert.assertEquals(getTextСonfirmation, informText);
     }

@@ -1,7 +1,6 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.webdriver.ChromeDriverFactory;
+import com.codeborne.selenide.WebDriverRunner;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,10 +8,10 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+
 import org.testng.annotations.Listeners;
 import pages.*;
 
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @Listeners(TestListener.class)
 public class BaseTest {
@@ -39,11 +38,7 @@ public class BaseTest {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
-//        Configuration.browser = "chrome";
-//        Configuration.timeout = 30000;
-//        Configuration.holdBrowserOpen = true;
-//        Configuration.headless = false;
-        driver.manage().window().maximize();
+        WebDriverRunner.setWebDriver(driver);
         String driverVariable = "driver";
         context.setAttribute(driverVariable, driver);
         signUpPage = new SignUpPage();
